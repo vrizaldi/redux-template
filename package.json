@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/server.js",
-    "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./src/public/index.min.css"
+    "start": "node ./dist/server.js",
+    "build": "babel ./src -d ./dist",
+    "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./dist/public/index.min.css"
   },
   "dependencies": {
     "axios": "*",
@@ -18,10 +19,14 @@
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babel-preset-stage-0": "*",
+    "body-parser": "^1.17.2",
     "express": "*",
+    "file-system": "^2.2.2",
     "history": "*",
     "jquery": "*",
     "mongodb": "*",
+    "node-twitter-api": "^1.8.0",
+    "query-string": "^4.3.4",
     "react": "*",
     "react-dom": "*",
     "react-redux": "*",
@@ -36,6 +41,7 @@
   "author": "vrizaldi",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "eslint": "^4.1.1",
     "eslint-plugin-react": "^7.1.0"
   },

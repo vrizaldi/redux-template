@@ -1,23 +1,22 @@
 import React from "react";
-import { connect } from "react-redux"; 
+import { Switch, Route, Redirect } from "react-router-dom";
 
-import * as Actions from "../actions/Actions";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
 
-@connect((store) => {
-	return {
-		text: store.text.text
-	};
-}) export default class Main extends React.Component {
+export default class Main extends React.Component {
 	render() {
 		return(
-			<div>
-				<p>{this.props.text}</p>
-				<button onClick={this.changeText.bind(this)}>Click!</button>
-			</div>
+			<main>
+				<Redirect from="/" to="/home"/>
+				
+				<p>#body</p>
+				<h1>JS Works!</h1>
+				<Switch>
+					<Route path="/home" component={Home}/>
+					<Route path="/login" component={Login}/>
+				</Switch>
+			</main>
 		);
-	}
-
-	changeText() {
-		this.props.dispatch(Actions.changeText("It works"));
 	}
 }

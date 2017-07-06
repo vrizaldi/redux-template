@@ -1,0 +1,436 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"clie",
+				"client_secret"
+			],
+			[
+				"token",
+				"tokenExpired"
+			],
+			[
+				"body",
+				"bodyParser"
+			],
+			[
+				"FETC",
+				"FETCH_LIST_PENDING"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"sum",
+				"sumUp"
+			],
+			[
+				"delete",
+				"deletePoll"
+			],
+			[
+				"creat",
+				"createOpt"
+			],
+			[
+				"po",
+				"polls"
+			],
+			[
+				"a",
+				"application"
+			],
+			[
+				"admin",
+				"adminPolls"
+			],
+			[
+				"admi",
+				"adminPolls"
+			],
+			[
+				"user",
+				"userData"
+			],
+			[
+				"que",
+				"question"
+			],
+			[
+				"query",
+				"queryString"
+			],
+			[
+				"serve",
+				"server"
+			],
+			[
+				"handle",
+				"handleSignup"
+			],
+			[
+				"bo",
+				"body-parser"
+			],
+			[
+				"bod",
+				"bodyParser"
+			],
+			[
+				"mon",
+				"mongodb"
+			],
+			[
+				"poll",
+				"pollData"
+			],
+			[
+				"json",
+				"jsonencoded"
+			],
+			[
+				"logg",
+				"loggedIn"
+			],
+			[
+				"lo",
+				"loggedIn"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/server/scanLocation.js",
+			"settings":
+			{
+				"buffer_size": 985,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 389.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 58.0,
+		"history":
+		[
+			"kill-pane -a -t 0",
+			"kill-pane",
+			"kill pane",
+			"console.log(\"test\")",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/vrizaldi/workspace/nightlife",
+		"/home/vrizaldi/workspace/nightlife/src",
+		"/home/vrizaldi/workspace/nightlife/src/js/actions",
+		"/home/vrizaldi/workspace/nightlife/src/js/components",
+		"/home/vrizaldi/workspace/nightlife/src/js/middlewares",
+		"/home/vrizaldi/workspace/nightlife/src/js/reducers",
+		"/home/vrizaldi/workspace/nightlife/src/server"
+	],
+	"file_history":
+	[
+		"/home/vrizaldi/workspace/nightlife/src/js/client.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Header.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Input.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/reducers/listReducer.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Button.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/scanLocation.js",
+		"/home/vrizaldi/workspace/nightlife/src/server.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/actions/ListActions.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/pages/Home.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Main.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/reducers/index.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/servePage.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/store.js",
+		"/home/vrizaldi/workspace/nightlife/package.json",
+		"/home/vrizaldi/workspace/nightlife/src/js/actions/listReducer.js",
+		"/home/vrizaldi/workspace/nightlife/.eslintrc.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/actions/PollActions.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/actions/UserActions.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/reducers/userReducer.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/createOpt.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/deletePoll.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/components/Header.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/components/Button.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/client.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/components/Form.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Profile.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Poll.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/reducers/pollReducer.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/createPoll.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/handleSignup.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/handleLogin.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/handleVote.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/loadPoll.js",
+		"/home/vrizaldi/workspace/polling-app2/package.json",
+		"/home/vrizaldi/workspace/polling-app2/src/js/components/Main.js",
+		"/home/vrizaldi/workspace/polling-app2/.babelrc",
+		"/home/vrizaldi/workspace/polling-app2/src/server/Client.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Home.js",
+		"/home/vrizaldi/workspace/polling-app2/webpack.config.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server-handlers/serveIndex.js",
+		"/home/vrizaldi/workspace/polling-app2/dist/server.js",
+		"/home/vrizaldi/workspace/polling-app2/src/server/server.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/components/Notif.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/reducers/index.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Login.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/pages/Register.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/actions/pollActions.js",
+		"/home/vrizaldi/workspace/polling-app2/src/js/store.js",
+		"/home/vrizaldi/workspace/polling-app2/.eslintrc.js",
+		"/home/vrizaldi/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/vrizaldi/workspace/polling-app2/src/views/index.html",
+		"/home/vrizaldi/workspace/polling-app/src/js/pages/Profile.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/pages/Login.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/components/Main.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/reducers/userReducer.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/reducers/pollsReducer.js",
+		"/home/vrizaldi/workspace/redux-template/src/js/reducers/index.js",
+		"/home/vrizaldi/workspace/redux-template/src/js/middlewares/log.js",
+		"/home/vrizaldi/workspace/redux-template/src/js/store.js",
+		"/home/vrizaldi/workspace/redux-template/src/js/App.js",
+		"/home/vrizaldi/workspace/redux-template/src/js/client.js",
+		"/home/vrizaldi/workspace/polling-app/package.json",
+		"/home/vrizaldi/workspace/polling-app/src/views/index.html",
+		"/home/vrizaldi/workspace/polling-app/src/js/client.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/pages/App.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/components/Header.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/reducers/index.js",
+		"/home/vrizaldi/workspace/polling-app/src/js/store.js",
+		"/home/vrizaldi/workspace/polling-app/src/public/client.min.js",
+		"/home/vrizaldi/workspace/polling-app/.eslintrc.js",
+		"/home/vrizaldi/.config/sublime-text-3/Packages/User/Babel.sublime-settings",
+		"/home/vrizaldi/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/vrizaldi/.config/sublime-text-3/Packages/User/JavaScript.sublime-settings"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			">\n",
+			"_id",
+			"doc\n",
+			"DOC\n",
+			"[]\n",
+			"DOC",
+			"[]\n",
+			"MongoClient",
+			"console",
+			"mongo",
+			"success",
+			"bodyParser",
+			"mongo",
+			"express",
+			"mongodb",
+			"_bodyParser2",
+			"_body",
+			"_mongodb2",
+			"_express2",
+			"poll",
+			"//\t\t",
+			"Login",
+			"parser"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"mongo",
+			"MongoClient",
+			"mongo",
+			"bodyParser",
+			"mongodb",
+			"express"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/server/scanLocation.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 985,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 174.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 29.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "nightlife.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/workspace/polling-app/polling-app.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 147.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
