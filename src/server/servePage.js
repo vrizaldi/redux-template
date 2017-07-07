@@ -35,7 +35,6 @@ export default function servePage(req, res) {
 			<meta name="author" content="vrizaldi">
 
 			<link href="/bootstrap.min.css" rel="stylesheet">
-			<link href="/freelancer.min.css" rel="stylesheet">
 			<link href="/index.min.css" rel="stylesheet">
 		</head>
 

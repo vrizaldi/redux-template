@@ -60,7 +60,7 @@ var Login = (_dec = (0, _reactRedux.connect)(function (store) {
 	}, {
 		key: "render",
 		value: function render() {
-			if (this.props.fetching) {
+			if (this.props.status == "fetching") {
 				// show loading screen
 				return _react2.default.createElement(
 					"p",

@@ -6,6 +6,7 @@ export default class Input extends React.Component {
 			<div>
 				<label for={this.props.id}>{this.props.label}</label>
 				<input id={this.props.id} 
+					className={this.props.className}
 					type={this.props.type ? this.props.type : "text"}/>
 			</div>
 		);

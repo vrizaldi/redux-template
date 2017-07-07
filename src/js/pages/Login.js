@@ -22,7 +22,7 @@ import { fetchUserData } from "../actions/UserActions";
 	}
 
 	render() {
-		if(this.props.fetching) {
+		if(this.props.status == "fetching") {
 			// show loading screen
 			return(
 				<p>Fetching user data...</p>

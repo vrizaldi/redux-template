@@ -4,6 +4,86 @@
 		"selected_items":
 		[
 			[
+				"going",
+				"goingTo"
+			],
+			[
+				"defau",
+				"defaultChecked"
+			],
+			[
+				"locatio",
+				"locationID"
+			],
+			[
+				"access",
+				"accessToken"
+			],
+			[
+				"oaut",
+				"oauth_token"
+			],
+			[
+				"oauth",
+				"oauth_verifier"
+			],
+			[
+				"__",
+				"__requestSecrets"
+			],
+			[
+				"oau",
+				"oauth_token"
+			],
+			[
+				"reques",
+				"request_token"
+			],
+			[
+				"cl",
+				"client_id"
+			],
+			[
+				"twitter",
+				"twitterTokenManager"
+			],
+			[
+				"Twitter",
+				"TwitterTokenManager"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"req",
+				"requestSecret"
+			],
+			[
+				"request",
+				"requestToken"
+			],
+			[
+				"init",
+				"initialised"
+			],
+			[
+				"ini",
+				"initialised"
+			],
+			[
+				"acc",
+				"accessToken"
+			],
+			[
+				"clien",
+				"client_secret"
+			],
+			[
+				"client",
+				"client_credentials"
+			],
+			[
 				"clie",
 				"client_secret"
 			],
@@ -50,10 +130,6 @@
 			[
 				"admi",
 				"adminPolls"
-			],
-			[
-				"user",
-				"userData"
 			],
 			[
 				"que",
@@ -104,10 +180,82 @@
 	"buffers":
 	[
 		{
-			"file": "src/server/scanLocation.js",
+			"file": "src/server.js",
 			"settings":
 			{
-				"buffer_size": 985,
+				"buffer_size": 1142,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/css/index.css",
+			"settings":
+			{
+				"buffer_size": 140,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Input.js",
+			"settings":
+			{
+				"buffer_size": 315,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/pages/Home.js",
+			"settings":
+			{
+				"buffer_size": 2646,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Main.js",
+			"settings":
+			{
+				"buffer_size": 461,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/server/servePage.js",
+			"settings":
+			{
+				"buffer_size": 1102,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Header.js",
+			"settings":
+			{
+				"buffer_size": 767,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Button.js",
+			"settings":
+			{
+				"buffer_size": 324,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/components/Checkbox.js",
+			"settings":
+			{
+				"buffer_size": 469,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -120,11 +268,19 @@
 	"command_palette":
 	{
 		"height": 389.0,
-		"last_filter": "",
+		"last_filter": "packa",
 		"selected_items":
 		[
 			[
 				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: React: this.props."
+			],
+			[
+				"pac",
 				"Package Control: Install Package"
 			],
 			[
@@ -136,7 +292,7 @@
 				"View: Toggle Menu"
 			]
 		],
-		"width": 467.0
+		"width": 521.0
 	},
 	"console":
 	{
@@ -163,26 +319,46 @@
 	[
 		"/home/vrizaldi/workspace/nightlife",
 		"/home/vrizaldi/workspace/nightlife/src",
+		"/home/vrizaldi/workspace/nightlife/src/css",
+		"/home/vrizaldi/workspace/nightlife/src/js",
 		"/home/vrizaldi/workspace/nightlife/src/js/actions",
 		"/home/vrizaldi/workspace/nightlife/src/js/components",
 		"/home/vrizaldi/workspace/nightlife/src/js/middlewares",
+		"/home/vrizaldi/workspace/nightlife/src/js/pages",
 		"/home/vrizaldi/workspace/nightlife/src/js/reducers",
 		"/home/vrizaldi/workspace/nightlife/src/server"
 	],
 	"file_history":
 	[
-		"/home/vrizaldi/workspace/nightlife/src/js/client.js",
-		"/home/vrizaldi/workspace/nightlife/src/js/components/Header.js",
-		"/home/vrizaldi/workspace/nightlife/src/js/components/Input.js",
-		"/home/vrizaldi/workspace/nightlife/src/js/reducers/listReducer.js",
-		"/home/vrizaldi/workspace/nightlife/src/js/components/Button.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/TwitterTokenManager.js",
 		"/home/vrizaldi/workspace/nightlife/src/server/scanLocation.js",
-		"/home/vrizaldi/workspace/nightlife/src/server.js",
-		"/home/vrizaldi/workspace/nightlife/src/js/actions/ListActions.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/actions/UserActions.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/cancelPlace.js",
 		"/home/vrizaldi/workspace/nightlife/src/js/pages/Home.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/addPlace.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Checkbox.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/actions/ListActions.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/reducers/userReducer.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/pages/Login.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Header.js",
 		"/home/vrizaldi/workspace/nightlife/src/js/components/Main.js",
+		"/home/vrizaldi/workspace/nightlife/src/server.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/TwitterLogin.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Button.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Login.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/TwitterAuth.js",
 		"/home/vrizaldi/workspace/nightlife/src/js/reducers/index.js",
+		"/home/vrizaldi/workspace/nightlife/dist/server/YelpAuth.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/reducers/listReducer.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/handleLogin.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/YelpTokenManager.js",
+		"/home/vrizaldi/workspace/nightlife/dist/server/yelp_client_id.txt",
+		"/home/vrizaldi/workspace/nightlife/dist/server/YelpAuth.json",
+		"/home/vrizaldi/workspace/nightlife/src/server/TokenManager.js",
+		"/home/vrizaldi/workspace/nightlife/src/server/searchAPI.js",
 		"/home/vrizaldi/workspace/nightlife/src/server/servePage.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/client.js",
+		"/home/vrizaldi/workspace/nightlife/src/js/components/Input.js",
 		"/home/vrizaldi/workspace/nightlife/src/js/store.js",
 		"/home/vrizaldi/workspace/nightlife/package.json",
 		"/home/vrizaldi/workspace/nightlife/src/js/actions/listReducer.js",
@@ -248,7 +424,7 @@
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -262,6 +438,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"}\n",
+			"tokenManager",
+			"this.props.list",
+			"initialised",
+			"access",
+			",\n",
 			">\n",
 			"_id",
 			"doc\n",
@@ -292,6 +474,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"yelpTokenManager",
+			"this.props.businesses",
 			"mongo",
 			"MongoClient",
 			"mongo",
@@ -308,24 +492,109 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/server/scanLocation.js",
-					"semi_transient": true,
+					"file": "src/server.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 985,
+						"buffer_size": 1142,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								443,
+								443
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/css/index.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								30,
+								30
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/js/components/Input.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								237,
+								237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/js/pages/Home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2646,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1657,
+								1657
 							]
 						],
 						"settings":
@@ -334,10 +603,155 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 174.0,
+						"translation.y": 133.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/js/components/Main.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 461,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								402,
+								402
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/server/servePage.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1102,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								774,
+								774
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/js/components/Header.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								647,
+								647
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 132.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/js/components/Button.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								243,
+								243
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/js/components/Checkbox.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 469,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								203,
+								203
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -386,7 +800,7 @@
 	"project": "nightlife.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -428,7 +842,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 147.0,
+	"side_bar_width": 211.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

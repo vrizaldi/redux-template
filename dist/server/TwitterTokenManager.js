@@ -14,6 +14,10 @@ var _nodeTwitterApi = require("node-twitter-api");
 
 var _nodeTwitterApi2 = _interopRequireDefault(_nodeTwitterApi);
 
+var _mongodb = require("mongodb");
+
+var _mongodb2 = _interopRequireDefault(_mongodb);
+
 var _TwitterAuth = require("./TwitterAuth");
 
 var _TwitterAuth2 = _interopRequireDefault(_TwitterAuth);
@@ -61,11 +65,7 @@ var TwitterTokenManager = function () {
 					_this.__requestSecrets[requestToken] = requestSecret;
 					console.log("request_token:", requestToken);
 					console.log("request_secret:", requestSecret);
-					res.writeHead(302, {
-						"Access-Control-Allow-Origin": "http://api.twitter.com",
-						"Location": "https://api.twitter.com/oauth/authorize?oauth_token=" + requestToken
-					});
-					res.end();
+					res.redirect("https://api.twitter.com/oauth/authorize?oauth_token=" + requestToken);
 				}
 			});
 		}
@@ -98,9 +98,15 @@ var TwitterTokenManager = function () {
 					// verify the user and return the user creds
 					_this2.__twitter.verifyCredentials(accessToken, accessSecret, function (err, user) {
 						if (err) {
-							res.status(err.statusCode).send(err);
+							throw err;
 						} else {
 							console.log(user);
+
+							// register user if not registered in database
+							_mongodb2.default.connect("mongodb://admin:a$ianDad@ds151222.mlab.com:51222/nightnight", function (err, db) {
+								_this2.registerUser(err, db, user);
+							});
+
 							res.json({
 								id: user.id,
 								username: user.screen_name,
@@ -108,6 +114,28 @@ var TwitterTokenManager = function () {
 							});
 						}
 					});
+				}
+			});
+		}
+	}, {
+		key: "registerUser",
+		value: function registerUser(err, db, user) {
+			// check if user exists
+			db.collection("users").find({
+				id: user.id
+			}).toArray(function (err, docs) {
+				if (err) {
+					throw err;
+				} else {
+					if (docs.length == 0) {
+						// user not found
+						// register the new user
+						console.log("Registering new user " + user.id);
+						db.collection("users").save({
+							id: user.id,
+							goingTo: []
+						});
+					}
 				}
 			});
 		}

@@ -48,7 +48,7 @@ function servePage(req, res) {
 		"content-type": "text/html"
 	});
 	// send completed html to client
-	res.write("\n\t<!doctype html>\n\t\t<html>\n\t\t<head>\n\t\t\t<meta charset=\"utf-8\">\n\n\t\t\t<title></title>\n\t\t\t<meta name=\"author\" content=\"vrizaldi\">\n\n\t\t\t<link href=\"/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/freelancer.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/index.min.css\" rel=\"stylesheet\">\n\t\t</head>\n\n\t\t<body>\n\t\t\t<div id=\"app\">" + html + "</div>\n\t\t\t<script src=\"/client.min.js\"></script>\n\t\t\t<p id=\"credit\">Verdy Noorghifari 2017 \xA9 All right reversed.</p>\n\t\t</body>\n\t\t</html>\n\t");
+	res.write("\n\t<!doctype html>\n\t\t<html>\n\t\t<head>\n\t\t\t<meta charset=\"utf-8\">\n\n\t\t\t<title></title>\n\t\t\t<meta name=\"author\" content=\"vrizaldi\">\n\n\t\t\t<link href=\"/bootstrap.min.css\" rel=\"stylesheet\">\n\t\t\t<link href=\"/index.min.css\" rel=\"stylesheet\">\n\t\t</head>\n\n\t\t<body>\n\t\t\t<div id=\"app\">" + html + "</div>\n\t\t\t<script src=\"/client.min.js\"></script>\n\t\t\t<p id=\"credit\">Verdy Noorghifari 2017 \xA9 All right reversed.</p>\n\t\t</body>\n\t\t</html>\n\t");
 	res.end();
 	console.log("File sent");
 }

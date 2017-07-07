@@ -10,8 +10,7 @@ export default class Main extends React.Component {
 			<main>
 				<Redirect from="/" to="/home"/>
 				
-				<p>#body</p>
-				<h1>JS Works!</h1>
+				<h1 id="title">Night Night</h1>
 				<Switch>
 					<Route path="/home" component={Home}/>
 					<Route path="/login" component={Login}/>

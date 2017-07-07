@@ -26,6 +26,14 @@ var _TwitterTokenManager2 = _interopRequireDefault(_TwitterTokenManager);
 
 var _TwitterLogin = require("./server/TwitterLogin");
 
+var _addPlace = require("./server/addPlace");
+
+var _addPlace2 = _interopRequireDefault(_addPlace);
+
+var _cancelPlace = require("./server/cancelPlace");
+
+var _cancelPlace2 = _interopRequireDefault(_cancelPlace);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _YelpTokenManager2.default.init();
@@ -46,6 +54,9 @@ server.get("/get_user", _TwitterLogin.getUser);
 
 // landing page
 server.get("*", _servePage2.default);
+
+server.post("/go_to", jsonencoded, _addPlace2.default);
+server.post("/cancel_to", jsonencoded, _cancelPlace2.default);
 
 var port = process.env.PORT ? process.env.PORT : 21701;
 server.listen(port, function (err) {

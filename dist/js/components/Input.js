@@ -40,6 +40,7 @@ var Input = function (_React$Component) {
 					this.props.label
 				),
 				_react2.default.createElement("input", { id: this.props.id,
+					className: this.props.className,
 					type: this.props.type ? this.props.type : "text" })
 			);
 		}

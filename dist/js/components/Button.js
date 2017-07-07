@@ -39,7 +39,9 @@ var Button = function (_React$Component) {
 			return _react2.default.createElement(
 				"button",
 				{ onClick: this.onClick.bind(this),
-					value: this.props.value },
+					className: this.props.className,
+					value: this.props.value
+				},
 				this.props.label
 			);
 		}

@@ -46,14 +46,9 @@ var Main = function (_React$Component) {
 				null,
 				_react2.default.createElement(_reactRouterDom.Redirect, { from: "/", to: "/home" }),
 				_react2.default.createElement(
-					"p",
-					null,
-					"#body"
-				),
-				_react2.default.createElement(
 					"h1",
-					null,
-					"JS Works!"
+					{ id: "title" },
+					"Night Night"
 				),
 				_react2.default.createElement(
 					_reactRouterDom.Switch,
