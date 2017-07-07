@@ -23,7 +23,7 @@ class TwitterTokenManager {
 		this.__twitter = new Twitter({
 			consumerKey: twitterAuth.client_id,
 			consumerSecret: twitterAuth.client_secret,
-			callback: "http://127.0.0.1:21701/login"
+			callback: "https://murmuring-escarpment-21704.herokuapp.com/login"
 		});
 	}
 
