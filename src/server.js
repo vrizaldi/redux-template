@@ -1,22 +1,12 @@
-const express = require("express");
-const mongo = require("mongodb").MongoClient;
+import express from "express";
 
-
+import servePage from "./server/servePage.js";
 
 var server = express();
 
 server.use(express.static(__dirname + "/public"));
 
-server.get("/", 
-		function(req, res) {
-			console.log("Called");
-			res.sendFile(__dirname + "/views/index.html",
-				function(err) {
-					if(err) throw err;
-
-					console.log("File sent");
-				});
-		});
+server.get("*", servePage);
 
 var port = process.env.PORT ? process.env.PORT : 21701;
 server.listen(port, 
