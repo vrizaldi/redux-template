@@ -1,10 +1,10 @@
 import express from "express";
 
-import servePage from "./server/servePage.js";
+import servePage from "./servePage.js";
 
 var server = express();
 
-server.use(express.static(__dirname + "/public"));
+server.use(express.static(__dirname + "/../public"));
 
 server.get("*", servePage);
 

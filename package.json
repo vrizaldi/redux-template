@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/server.js",
-		"build": "babel ./src -d ./dist",
+    "start": "node ./dist/server/server.js",
+    "build": "babel ./src -d ./dist",
     "uglifycss": "uglifycss --ugly-comments ./src/css/index.css > ./dist/public/index.min.css"
   },
   "dependencies": {

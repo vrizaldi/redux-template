@@ -17,11 +17,11 @@ var _reactRouter = require("react-router");
 
 var _reactRedux = require("react-redux");
 
-var _store = require("../js/store");
+var _store = require("../client/store");
 
 var _store2 = _interopRequireDefault(_store);
 
-var _App = require("../js/App");
+var _App = require("../client/App");
 
 var _App2 = _interopRequireDefault(_App);
 

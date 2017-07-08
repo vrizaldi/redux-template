@@ -3,7 +3,7 @@ var webpack = require("webpack");
 
 module.exports = {
 	context: __dirname + "/dist",
-	entry: "./js/client.js",
+	entry: "./client/client.js",
 	output: {
 		path: __dirname + "/dist/public",
 		filename: "client.min.js"

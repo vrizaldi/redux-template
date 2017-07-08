@@ -3,8 +3,8 @@ import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router";
 import { Provider } from "react-redux";
 
-import store from "../js/store";
-import App from "../js/App";
+import store from "../client/store";
+import App from "../client/App";
 
 export default function servePage(req, res) {
 	console.log("Serving page...");
