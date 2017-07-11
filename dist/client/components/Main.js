@@ -7,19 +7,27 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _class;
-
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require("react-redux");
+var _reactRouterDom = require("react-router-dom");
 
-var _Actions = require("../actions/Actions");
+var _Login = require("../pages/Login");
 
-var Actions = _interopRequireWildcard(_Actions);
+var _Login2 = _interopRequireDefault(_Login);
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _Profile = require("../pages/Profile");
+
+var _Profile2 = _interopRequireDefault(_Profile);
+
+var _Home = require("../pages/Home");
+
+var _Home2 = _interopRequireDefault(_Home);
+
+var _LoggingIn = require("../pages/LoggingIn");
+
+var _LoggingIn2 = _interopRequireDefault(_LoggingIn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,11 +37,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Main = (_dec = (0, _reactRedux.connect)(function (store) {
-	return {
-		text: store.text.text
-	};
-}), _dec(_class = function (_React$Component) {
+var Main = function (_React$Component) {
 	_inherits(Main, _React$Component);
 
 	function Main() {
@@ -49,24 +53,23 @@ var Main = (_dec = (0, _reactRedux.connect)(function (store) {
 				"div",
 				null,
 				_react2.default.createElement(
-					"p",
+					"h1",
 					null,
-					this.props.text
+					"#Main"
 				),
 				_react2.default.createElement(
-					"button",
-					{ onClick: this.changeText.bind(this) },
-					"Click!"
+					_reactRouterDom.Switch,
+					null,
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Home2.default }),
+					_react2.default.createElement(_reactRouterDom.Route, { path: "/profile", component: _Profile2.default }),
+					_react2.default.createElement(_reactRouterDom.Route, { path: "/login", component: _Login2.default }),
+					_react2.default.createElement(_reactRouterDom.Route, { path: "/logging_in", component: _LoggingIn2.default })
 				)
 			);
-		}
-	}, {
-		key: "changeText",
-		value: function changeText() {
-			this.props.dispatch(Actions.changeText("It works"));
 		}
 	}]);
 
 	return Main;
-}(_react2.default.Component)) || _class);
+}(_react2.default.Component);
+
 exports.default = Main;
