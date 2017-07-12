@@ -15,9 +15,19 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = require("react-redux");
 
+var _reactRouterDom = require("react-router-dom");
+
 var _Nav = require("./Nav");
 
 var _Nav2 = _interopRequireDefault(_Nav);
+
+var _Button = require("./Button");
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _NewWinDialogue = require("./NewWinDialogue");
+
+var _NewWinDialogue2 = _interopRequireDefault(_NewWinDialogue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37,18 +47,94 @@ var Header = (_dec = (0, _reactRedux.connect)(function (store) {
 	function Header() {
 		_classCallCheck(this, Header);
 
-		return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+
+		_this.state = {
+			showingNewWin: false // for modal
+		};
+		return _this;
 	}
 
 	_createClass(Header, [{
+		key: "showNewWin",
+		value: function showNewWin() {
+			// show modal
+			this.setState({
+				showingNewWin: true
+			});
+		}
+	}, {
+		key: "hideNewWin",
+		value: function hideNewWin() {
+			// hide modal
+			this.setState({
+				showingNewWin: false
+			});
+		}
+	}, {
+		key: "addWin",
+		value: function (_addWin) {
+			function addWin() {
+				return _addWin.apply(this, arguments);
+			}
+
+			addWin.toString = function () {
+				return _addWin.toString();
+			};
+
+			return addWin;
+		}(function () {
+			var imageurl = document.getElementById("new-win-img-url").value;
+			var title = document.getElementById("new-win-title").value;
+			var desc = document.getElementById("new-win-desc").value;
+			var newWin = {
+				imageurl: imageurl,
+				title: title,
+				desc: desc
+			};
+
+			console.log("Adding " + title + " - " + desc + " (" + imageurl + ")", newWin);
+			this.props.dispatch(addWin(this.props.userData.accessToken, newWin));
+
+			// hide the dialogue after
+			this.hideNewWin();
+		})
+	}, {
 		key: "render",
 		value: function render() {
 			console.log("loggedIn", this.props.loggedIn);
 			return _react2.default.createElement(
-				"div",
-				null,
-				"#header",
-				_react2.default.createElement(_Nav2.default, { loggedIn: this.props.loggedIn })
+				"header",
+				{ role: "banner", className: "navbar fixed-top" },
+				_react2.default.createElement(
+					"div",
+					{ className: "row" },
+					_react2.default.createElement(
+						"div",
+						{ className: "col-md-2" },
+						_react2.default.createElement(
+							_reactRouterDom.Link,
+							{ className: "nav-link", to: this.props.loggedIn ? "/profile" : "/home" },
+							"#winterest"
+						)
+					),
+					this.props.loggedIn ? _react2.default.createElement(
+						"div",
+						{ id: "win-adder-wrapper", className: "col-md-2" },
+						_react2.default.createElement(
+							_Button2.default,
+							{ className: "btn btn-success",
+								action: this.showNewWin.bind(this)
+							},
+							"+"
+						),
+						_react2.default.createElement(_NewWinDialogue2.default, { show: this.state.showingNewWin,
+							addWin: this.addWin.bind(this),
+							hideNewWin: this.hideNewWin.bind(this)
+						})
+					) : "",
+					_react2.default.createElement(_Nav2.default, { loggedIn: this.props.loggedIn })
+				)
 			);
 		}
 	}]);

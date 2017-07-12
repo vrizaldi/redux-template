@@ -11,6 +11,7 @@ export default class InputField extends React.Component {
 					placeholder={this.props.placeholder}
 					value={this.props.value}
 					disabled={this.props.disabled}
+					onInput={this.props.onInput}
 				/>
 			</div>
 		);

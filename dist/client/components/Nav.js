@@ -36,12 +36,7 @@ var Nav = function (_React$Component) {
 
 			return _react2.default.createElement(
 				"div",
-				{ className: "nav" },
-				_react2.default.createElement(
-					_reactRouterDom.Link,
-					{ className: "nav-link", to: this.props.loggedIn ? "/profile" : "/home" },
-					"#winterest"
-				),
+				{ id: "nav", className: "nav col-md-8" },
 				this.props.loggedIn ? _react2.default.createElement(
 					_reactRouterDom.Link,
 					{ className: "nav-link", to: "/profile" },

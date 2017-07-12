@@ -1,8 +1,11 @@
 import passport from "passport";
 import FacebookStrategy from "passport-facebook";
 import monk from "monk";
+import fs from "file-system";
+import jsonwebtoken from "jsonwebtoken";
 
 import { facebook, mongodb } from "./client.__secret";
+import cert from "./cert.__secret";
 
 class FacebookTokenManager {
 	constructor() {
@@ -33,14 +36,17 @@ class FacebookTokenManager {
 			}, {
 				$setOnInsert: {
 					// default values on creation
-					wins: []
+					wins: [],
+					accessToken: jsonwebtoken.sign({_id: profile.id}, cert)
 				}
 			}, {upsert: true}).then((userData) => {
 				// pass it on to callback
+				console.log("accessToken", userData.accessToken);
 				cb({
 					username: profile.displayName,
 					imageurl: profile.photos[0].value,
-					wins: userData.wins
+					wins: userData.wins,
+					accessToken: userData.accessToken
 				});
 				db.close();
 			});

@@ -10,6 +10,10 @@ var _reduxPromiseMiddleware = require("redux-promise-middleware");
 
 var _reduxPromiseMiddleware2 = _interopRequireDefault(_reduxPromiseMiddleware);
 
+var _reduxThunk = require("redux-thunk");
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
 var _reducers = require("./reducers");
 
 var _reducers2 = _interopRequireDefault(_reducers);
@@ -24,5 +28,5 @@ var _error2 = _interopRequireDefault(_error);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var middlewares = (0, _redux.applyMiddleware)((0, _reduxPromiseMiddleware2.default)(), _log2.default, _error2.default);
+var middlewares = (0, _redux.applyMiddleware)((0, _reduxPromiseMiddleware2.default)(), _reduxThunk2.default, _log2.default, _error2.default);
 exports.default = (0, _redux.createStore)(_reducers2.default, middlewares);

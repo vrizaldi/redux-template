@@ -44,7 +44,8 @@ var InputField = function (_React$Component) {
 					type: this.props.type,
 					placeholder: this.props.placeholder,
 					value: this.props.value,
-					disabled: this.props.disabled
+					disabled: this.props.disabled,
+					onInput: this.props.onInput
 				})
 			);
 		}

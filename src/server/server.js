@@ -6,6 +6,8 @@ import facebookManager from "./FacebookTokenManager";
 import googleManager from "./GoogleTokenManager";
 
 import servePage from "./servePage";
+import addWin from "./addWin";
+import parseWins from "./parseWins";
 
 // initialise token managers
 twitterManager.init();
@@ -30,6 +32,9 @@ server.get("/login_google", googleManager.getRequestToken.bind(googleManager));
 server.get("/verify_oauth_google", googleManager.verifyOauth.bind(googleManager));
 
 server.get("*", servePage);
+
+server.post("/add_win", jsonencoded, addWin);
+server.post("/parse_wins", jsonencoded, parseWins);
 
 // start server
 var port = process.env.PORT ? process.env.PORT : 21701;

@@ -18,7 +18,19 @@ var _monk = require("monk");
 
 var _monk2 = _interopRequireDefault(_monk);
 
+var _fileSystem = require("file-system");
+
+var _fileSystem2 = _interopRequireDefault(_fileSystem);
+
+var _jsonwebtoken = require("jsonwebtoken");
+
+var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+
 var _client = require("./client.__secret");
+
+var _cert = require("./cert.__secret");
+
+var _cert2 = _interopRequireDefault(_cert);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,14 +72,17 @@ var FacebookTokenManager = function () {
 				}, {
 					$setOnInsert: {
 						// default values on creation
-						wins: []
+						wins: [],
+						accessToken: _jsonwebtoken2.default.sign({ _id: profile.id }, _cert2.default)
 					}
 				}, { upsert: true }).then(function (userData) {
 					// pass it on to callback
+					console.log("accessToken", userData.accessToken);
 					cb({
 						username: profile.displayName,
 						imageurl: profile.photos[0].value,
-						wins: userData.wins
+						wins: userData.wins,
+						accessToken: userData.accessToken
 					});
 					db.close();
 				});

@@ -1,7 +1,12 @@
 const initialStates = {
 	status: "idle",
 	loggedIn: false,
-	userData: null
+	userData: {
+		username: "",
+		imageurl: "",
+		accessToken: "",
+		wins: []
+	}
 };
 
 export default function reduce(state=initialStates, action) {
@@ -34,14 +39,44 @@ export default function reduce(state=initialStates, action) {
 		};
 
 	case "FETCH_USER_FULFILLED":
+		var { username, imageurl, accessToken } = action.payload.data;
 		return {
 			...state,
 			status: "succeed",
 			loggedIn: true,
-			userData: action.payload.data
+			userData: {
+				...state.userData,
+				username,
+				imageurl,
+				accessToken
+			}
 		};
 
 	case "FETCH_USER_REJECTED":
+		alert(action.payload.response.data ? action.payload.response.data : action.payload);
+		return {
+			...state,
+			status: "failed"
+		};
+
+	case "FETCH_WINS_PENDING":
+		return {
+			...state,
+			status: "fetching"
+		};
+
+	case "FETCH_WINS_FULFILLED":
+		console.log("wins", action.payload.data);
+		return {
+			...state,
+			status: "succeed",
+			userData: {
+				...state.userData,
+				wins: action.payload.data
+			}
+		};
+
+	case "FETCH_WINS_REJECTED":
 		alert(action.payload.response.data ? action.payload.response.data : action.payload);
 		return {
 			...state,

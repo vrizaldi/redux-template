@@ -4,12 +4,15 @@ import { Redirect } from "react-router-dom";
 
 import Wins from "../components/Wins";
 
+import { addWin } from "../actions/UserActions";
+
 @connect((store) => {
 	return {
 		loggedIn: store.user.loggedIn,
 		userData: store.user.userData
 	}
 }) export default class Profile extends React.Component {
+
 	render() {
 		if(!this.props.loggedIn) {
 			// redirect to home if not logged in

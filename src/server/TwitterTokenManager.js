@@ -1,7 +1,9 @@
 import twitterAPI from "node-twitter-api";
 import monk from "monk";
+import jsonwebtoken from "jsonwebtoken";
 
 import { twitter, mongodb } from "./client.__secret";
+import cert from "./cert.__secret";
 
 class TwitterTokenManager {
 	constructor() {
@@ -89,7 +91,8 @@ class TwitterTokenManager {
 										// new user, register them
 										users.insert({
 											_id: monk.id(userTwitter.id),
-											wins: []
+											wins: [],
+											accessToken: jsonwebtoken.sign({_id: userTwitter.id}, cert)
 										}).then((userData) => {
 											// new user created
 											this.__returnUserData(res, userData, userTwitter);
@@ -116,7 +119,8 @@ class TwitterTokenManager {
 		res.json({
 			username: "@" + userTwitter.screen_name,
 			imageurl: userTwitter.profile_image_url_https,
-			wins: userData.wins
+			wins: userData.wins,
+			accessToken: userData.accessToken
 		});
 	} 
 

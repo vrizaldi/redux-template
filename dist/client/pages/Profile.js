@@ -17,6 +17,12 @@ var _reactRedux = require("react-redux");
 
 var _reactRouterDom = require("react-router-dom");
 
+var _Wins = require("../components/Wins");
+
+var _Wins2 = _interopRequireDefault(_Wins);
+
+var _UserActions = require("../actions/UserActions");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -61,11 +67,7 @@ var Profile = (_dec = (0, _reactRedux.connect)(function (store) {
 					username
 				),
 				_react2.default.createElement("img", { src: imageurl, alt: username + "'s profile image" }),
-				_react2.default.createElement(
-					"p",
-					null,
-					wins
-				)
+				_react2.default.createElement(_Wins2.default, { wins: wins })
 			);
 		}
 	}]);

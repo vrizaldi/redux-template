@@ -1,8 +1,11 @@
 import passport from "passport";
 import GoogleStrategy from "passport-google-oauth20";
 import monk from "monk";
+import fs from "file-system";
+import jsonwebtoken from "jsonwebtoken";
 
 import { google, mongodb } from "./client.__secret";
+import cert from "./cert.__secret";
 
 class GoogleTokenManager {
 	constructor() {
@@ -36,7 +39,8 @@ class GoogleTokenManager {
 			}, {
 				$setOnInsert: {
 					// default values on creation
-					wins: []
+					wins: [],
+					accessToken: jsonwebtoken.sign({_id: profile.id}, cert)
 				}
 			}, {upsert: true}).then((userData) => {
 				// pass it on to callback

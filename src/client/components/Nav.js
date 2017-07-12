@@ -5,10 +5,7 @@ export default class Nav extends React.Component {
 	render() {
 
 		return(
-			<div className="nav">
-				<Link className="nav-link" to={this.props.loggedIn ? "/profile" : "/home"}>
-					#winterest
-				</Link>
+			<div id="nav" className="nav col-md-8">
 				{
 					this.props.loggedIn ? (
 						<Link className="nav-link" to="/profile">

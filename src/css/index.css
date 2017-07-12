@@ -13,6 +13,17 @@ body {
 	float: right;
 }
 
+.modal.show {
+	background-color: rgb(0, 0, 0, 0.8);
+	display: block;
+	overflow-y: auto;
+	text-align: center;
+}
+
+.modal.show img {
+	max-width: 85%;
+}
+
 .desc {
 	-webkit-transition: 0.5s;
 	-o-transition: 0.5s;

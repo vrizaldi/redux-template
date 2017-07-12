@@ -10,7 +10,12 @@ exports.default = reduce;
 var initialStates = {
 	status: "idle",
 	loggedIn: false,
-	userData: null
+	userData: {
+		username: "",
+		imageurl: "",
+		accessToken: "",
+		wins: []
+	}
 };
 
 function reduce() {
@@ -42,13 +47,42 @@ function reduce() {
 			});
 
 		case "FETCH_USER_FULFILLED":
+			var _action$payload$data = action.payload.data,
+			    username = _action$payload$data.username,
+			    imageurl = _action$payload$data.imageurl,
+			    accessToken = _action$payload$data.accessToken;
+
 			return _extends({}, state, {
 				status: "succeed",
 				loggedIn: true,
-				userData: action.payload.data
+				userData: _extends({}, state.userData, {
+					username: username,
+					imageurl: imageurl,
+					accessToken: accessToken
+				})
 			});
 
 		case "FETCH_USER_REJECTED":
+			alert(action.payload.response.data ? action.payload.response.data : action.payload);
+			return _extends({}, state, {
+				status: "failed"
+			});
+
+		case "FETCH_WINS_PENDING":
+			return _extends({}, state, {
+				status: "fetching"
+			});
+
+		case "FETCH_WINS_FULFILLED":
+			console.log("wins", action.payload.data);
+			return _extends({}, state, {
+				status: "succeed",
+				userData: _extends({}, state.userData, {
+					wins: action.payload.data
+				})
+			});
+
+		case "FETCH_WINS_REJECTED":
 			alert(action.payload.response.data ? action.payload.response.data : action.payload);
 			return _extends({}, state, {
 				status: "failed"

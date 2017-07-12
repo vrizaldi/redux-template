@@ -24,6 +24,14 @@ var _servePage = require("./servePage");
 
 var _servePage2 = _interopRequireDefault(_servePage);
 
+var _addWin = require("./addWin");
+
+var _addWin2 = _interopRequireDefault(_addWin);
+
+var _parseWins = require("./parseWins");
+
+var _parseWins2 = _interopRequireDefault(_parseWins);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // initialise token managers
@@ -49,6 +57,9 @@ server.get("/login_google", _GoogleTokenManager2.default.getRequestToken.bind(_G
 server.get("/verify_oauth_google", _GoogleTokenManager2.default.verifyOauth.bind(_GoogleTokenManager2.default));
 
 server.get("*", _servePage2.default);
+
+server.post("/add_win", jsonencoded, _addWin2.default);
+server.post("/parse_wins", jsonencoded, _parseWins2.default);
 
 // start server
 var port = process.env.PORT ? process.env.PORT : 21701;
