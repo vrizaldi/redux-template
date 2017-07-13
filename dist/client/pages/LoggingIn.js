@@ -38,7 +38,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var LoggingIn = (_dec = (0, _reactRedux.connect)(function (store) {
 	return {
 		status: store.user.status,
-		loggedIn: store.user.loggedIn
+		loggedIn: store.user.loggedIn,
+		id: store.user.userData._id
 	};
 }), _dec(_class = function (_React$Component) {
 	_inherits(LoggingIn, _React$Component);
@@ -71,15 +72,8 @@ var LoggingIn = (_dec = (0, _reactRedux.connect)(function (store) {
 					break;
 
 				case "twitter":
-					// auth twitter
-					var oauth_token = query.oauth_token,
-					    oauth_verifier = query.oauth_verifier;
-
-					console.log("oauth_token", oauth_token);
-					console.log("oauth_verifier", oauth_verifier);
-
-					// fetch user data if token and verifier is provided
-					if (oauth_token && oauth_verifier) this.props.dispatch((0, _UserActions.fetchUserTwitter)(oauth_token, oauth_verifier));
+					// redirect the query (and hashes) to server
+					this.props.dispatch((0, _UserActions.fetchUserTwitter)(this.props.location.search + this.props.location.hash));
 					break;
 			}
 		}
@@ -89,11 +83,24 @@ var LoggingIn = (_dec = (0, _reactRedux.connect)(function (store) {
 			if (this.props.loggedIn) {
 				// redirect to profile if logged in
 				console.log("loggedIn", this.props.loggedIn);
-				return _react2.default.createElement(_reactRouterDom.Redirect, { to: "/profile" });
+				return _react2.default.createElement(_reactRouterDom.Redirect, { to: "/profile?id=" + this.props.id });
 			}
 
 			// fetching user data
-			return _react2.default.createElement(_OverAll2.default, { text: "Logging in..." });
+			return _react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement(
+					"h1",
+					{ id: "title" },
+					"Please Wait."
+				),
+				_react2.default.createElement(
+					"p",
+					null,
+					"Logging in..."
+				)
+			);
 		}
 	}]);
 

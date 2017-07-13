@@ -21,13 +21,13 @@ var _Profile = require("../pages/Profile");
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
-var _Home = require("../pages/Home");
-
-var _Home2 = _interopRequireDefault(_Home);
-
 var _LoggingIn = require("../pages/LoggingIn");
 
 var _LoggingIn2 = _interopRequireDefault(_LoggingIn);
+
+var _Recent = require("../pages/Recent");
+
+var _Recent2 = _interopRequireDefault(_Recent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50,17 +50,12 @@ var Main = function (_React$Component) {
 		key: "render",
 		value: function render() {
 			return _react2.default.createElement(
-				"div",
+				"main",
 				null,
-				_react2.default.createElement(
-					"h1",
-					null,
-					"#Main"
-				),
 				_react2.default.createElement(
 					_reactRouterDom.Switch,
 					null,
-					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Home2.default }),
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _Recent2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: "/profile", component: _Profile2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: "/login", component: _Login2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: "/logging_in", component: _LoggingIn2.default })

@@ -9,7 +9,8 @@ import { fetchUserTwitter, fetchUserFacebook, fetchUserGoogle } from "../actions
 @connect((store) => {
 	return {
 		status: store.user.status,
-		loggedIn: store.user.loggedIn
+		loggedIn: store.user.loggedIn,
+		id: store.user.userData._id
 	};
 }) export default class LoggingIn extends React.Component {
 	
@@ -33,13 +34,8 @@ import { fetchUserTwitter, fetchUserFacebook, fetchUserGoogle } from "../actions
 			break;
 
 		case "twitter":
-			// auth twitter
-			const { oauth_token, oauth_verifier } = query;
-			console.log("oauth_token", oauth_token);
-			console.log("oauth_verifier", oauth_verifier);
-
-			// fetch user data if token and verifier is provided
-			if(oauth_token && oauth_verifier) this.props.dispatch(fetchUserTwitter(oauth_token, oauth_verifier));
+			// redirect the query (and hashes) to server
+			this.props.dispatch(fetchUserTwitter(this.props.location.search + this.props.location.hash));
 			break;
 		}
 	}
@@ -49,14 +45,17 @@ import { fetchUserTwitter, fetchUserFacebook, fetchUserGoogle } from "../actions
 			// redirect to profile if logged in
 			console.log("loggedIn", this.props.loggedIn);
 			return(
-				<Redirect to="/profile"/>
+				<Redirect to={"/profile?id=" + this.props.id}/>
 			);
 
 		} 
 
 		// fetching user data
 		return(
-			<OverAll text="Logging in..."/>
+			<div>
+				<h1 id="title">Please Wait.</h1>
+				<p>Logging in...</p>
+			</div>
 		);
 	}
 }

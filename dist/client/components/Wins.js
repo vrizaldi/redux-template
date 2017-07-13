@@ -11,6 +11,18 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactMasonryComponent = require("react-masonry-component");
+
+var _reactMasonryComponent2 = _interopRequireDefault(_reactMasonryComponent);
+
+var _Win = require("./Win");
+
+var _Win2 = _interopRequireDefault(_Win);
+
+var _sortWins = require("../utils/sortWins");
+
+var _sortWins2 = _interopRequireDefault(_sortWins);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31,20 +43,32 @@ var Wins = function (_React$Component) {
 	_createClass(Wins, [{
 		key: "render",
 		value: function render() {
+			var _this2 = this;
+
+			(0, _sortWins2.default)(this.props.wins); // sort the wins in dates
+
 			return _react2.default.createElement(
-				"div",
-				{ className: "grid" },
+				_reactMasonryComponent2.default,
+				{ id: "wins-list",
+					className: "grid",
+					updateOnEachImageLoad: true,
+					options: {
+						columnWidth: "#grid-sizer",
+						itemSelector: ".grid-item"
+					}
+				},
+				_react2.default.createElement("div", { id: "grid-sizer" }),
 				this.props.wins.map(function (gridItem) {
-					return _react2.default.createElement(
-						"div",
-						{ className: "grid-item" },
-						_react2.default.createElement("img", { src: gridItem.imageurl, alt: gridItem.title }),
-						_react2.default.createElement(
-							"p",
-							null,
-							gridItem.desc
-						)
-					);
+					var liked = gridItem.likers.findIndex(function (liker) {
+						// check if user is one of the likers
+						return liker._id == _this2.props.user_id;
+					}) > -1; // -1 means they're not one of them
+					return _react2.default.createElement(_Win2.default, { key: gridItem._id,
+						gridItem: gridItem,
+						"delete": _this2.props.delete,
+						like: _this2.props.like,
+						liked: liked
+					});
 				})
 			);
 		}

@@ -6,7 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.fetchUserTwitter = fetchUserTwitter;
 exports.fetchUserFacebook = fetchUserFacebook;
 exports.fetchUserGoogle = fetchUserGoogle;
+exports.initUser = initUser;
 exports.addWin = addWin;
+exports.unWin = unWin;
+exports.like = like;
+exports.logout = logout;
 
 var _axios = require("axios");
 
@@ -14,108 +18,55 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function fetchUserTwitter(requestToken, requestVerifier) {
-	return function (dispatch) {
-		dispatch({
-			type: "FETCH_USER_PENDING"
-		});
-
-		(0, _axios2.default)({
-			method: "post",
-			url: "/verify_oauth_twitter",
-			data: {
-				requestToken: requestToken,
-				requestVerifier: requestVerifier
-			},
-			headers: {
-				"content-type": "application/json"
-			}
-		}).then(function (res) {
-			dispatch({
-				type: "FETCH_USER_FULFILLED",
-				payload: res
-			});
-
-			// parse the wins
-			parseWins(dispatch, res.data.wins);
-		}).catch(function (err) {
-			dispatch({
-				type: "FETCH_USER_REJECTED",
-				payload: err
-			});
-		});
+function fetchUserTwitter(query) {
+	return {
+		type: "FETCH_USER",
+		payload: _axios2.default.get("/verify_oauth_twitter" + query)
 	};
 }
 
 function fetchUserFacebook(query) {
-	return function (dispatch) {
-		dispatch({
-			type: "FETCH_USER_PENDING"
-		});
-
-		_axios2.default.get("/verify_oauth_facebook" + query).then(function (res) {
-			dispatch({
-				type: "FETCH_USER_FULFILLED",
-				payload: res
-			});
-			// parse the wins
-			parseWins(dispatch, res.data.wins);
-		}).catch(function (err) {
-			dispatch({
-				type: "FETCH_USER_REJECTED",
-				payload: err
-			});
-		});
+	return {
+		type: "FETCH_USER",
+		payload: _axios2.default.get("/verify_oauth_facebook" + query)
 	};
 }
 
 function fetchUserGoogle(query) {
-	return function (dispatch) {
-		dispatch({
-			type: "FETCH_USER_PENDING"
-		});
-
-		_axios2.default.get("/verify_oauth_google" + query).then(function (res) {
-			dispatch({
-				type: "FETCH_USER_FULFILLED",
-				payload: res
-			});
-			// parse the wins
-			parseWins(dispatch, res.data.wins);
-		}).catch(function (err) {
-			dispatch({
-				type: "FETCH_USER_REJECTED",
-				payload: err
-			});
-		});
+	return {
+		type: "FETCH_USER",
+		payload: _axios2.default.get("/verify_oauth_google" + query)
 	};
 }
 
-function parseWins(dispatch, wins) {
-	(0, _axios2.default)({
-		method: "post",
-		url: "/parse_wins",
-		data: wins,
-		headers: {
-			"content-type": "application/json"
-		}
-	}).then(function (res) {
-		dispatch({
-			type: "FETCH_WINS_FULFILLED",
-			payload: res
-		});
-	}).catch(function (err) {
-		dispatch({
-			type: "FETCH_WINS_REJECTED",
-			payload: err
-		});
-	});
+function initUser() {
+	var accessToken = localStorage.getItem("accessToken");
+	if (accessToken) {
+		// access token found
+		return {
+			type: "FETCH_USER",
+			payload: (0, _axios2.default)({
+				method: "post",
+				url: "/access_token_login",
+				data: {
+					accessToken: accessToken
+				},
+				headers: {
+					"content-type": "application/json"
+				}
+			})
+		};
+	} else {
+		return {
+			type: "NEVERMIND"
+		};
+	}
 }
 
 function addWin(accessToken, newWin) {
 	return function (dispatch) {
 		dispatch({
-			type: "FETCH_WINS_PENDING"
+			type: "UPDATE_WINS_PENDING"
 		});
 
 		(0, _axios2.default)({
@@ -129,8 +80,91 @@ function addWin(accessToken, newWin) {
 				"content-type": "application/json"
 			}
 		}).then(function (res) {
-			// parse the wins
-			parseWins(dispatch, res.data);
+			parseWins(dispatch, res.data.newWin).then(function (parsedRes) {
+				parsedRes.data.todo = res.data.todo;
+				dispatch({
+					type: "UPDATE_WINS_FULFILLED",
+					payload: parsedRes
+				});
+			}).catch(function (err) {
+				dispatch({
+					type: "UPDATE_WINS_REJECTED",
+					payload: err
+				});
+			});
+		}).catch(function (err) {
+			dispatch({
+				type: "UPDATE_WINS_REJECTED",
+				payload: err
+			});
 		});
+	};
+}
+
+function unWin(accessToken, winID) {
+	return {
+		type: "UPDATE_WINS",
+		payload: (0, _axios2.default)({
+			method: "post",
+			url: "/un_win",
+			data: {
+				accessToken: accessToken,
+				winID: winID
+			},
+			headers: {
+				"content-type": "application/json"
+			}
+		})
+	};
+	/*
+ 	return (dispatch) => {
+ 		dispatch({
+ 			type: "UPDATE_WINS_PENDING"
+ 		});
+ 
+ 		.then((res) => {	
+ 			parseWins(dispatch, res);
+ 		
+ 		}).catch((err) => {
+ 			dispatch({
+ 				type: "UPDATE_WINS_REJECTED",
+ 				payload: err
+ 			});
+ 		});
+ 	};*/
+}
+
+function like(accessToken, winID, liking) {
+	return {
+		type: "LIKE_WIN",
+		payload: (0, _axios2.default)({
+			method: "post",
+			url: "/like",
+			data: {
+				accessToken: accessToken,
+				winID: winID,
+				liking: liking
+			},
+			headers: {
+				"content-type": "application/json"
+			}
+		})
+	};
+}
+
+function parseWins(dispatch, wins) {
+	return (0, _axios2.default)({
+		method: "post",
+		url: "/parse_wins",
+		data: wins,
+		headers: {
+			"content-type": "application/json"
+		}
+	});
+}
+
+function logout() {
+	return {
+		type: "LOGOUT"
 	};
 }

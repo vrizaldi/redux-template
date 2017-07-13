@@ -9,7 +9,7 @@ export default function addWin(req, res) {
 
 	// connect to db
 	const db = monk(`mongodb://${mongodb.dbuser}:${mongodb.dbpassword}@ds055855.mlab.com:55855/winterest`);
-	const users = db.get("users");
+	const users = db.get("users", {castIds: false});
 	const wins = db.get("wins");
 
 	// check if user actually exist
@@ -19,11 +19,16 @@ export default function addWin(req, res) {
 	}).then((user) => {
 		if(user) {
 			// user found
-			// insert the new win
+			// insert the new win, with some new properties(timestamped, etc.)
+			newWin.timestamp = new Date;
+			newWin.by_id = user._id;
+			newWin.likers = [];
+			
+			console.log("newWin", newWin);
 			wins.insert(newWin).then((newWin) => {
 				// update the user's wins
 				users.findOneAndUpdate({
-					_id: monk.id(user._id)
+					_id: user._id
 				}, {
 					$push: {
 						wins: {
@@ -36,7 +41,9 @@ export default function addWin(req, res) {
 
 					// everything went perfectly
 					console.log("userChange", userChange);
-					res.json(userChange.wins);
+					
+					// return the new win
+					res.json({todo: "add", newWin: [newWin]});
 					db.close();
 
 				}).catch((err) => {

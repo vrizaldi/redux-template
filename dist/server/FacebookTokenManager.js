@@ -18,10 +18,6 @@ var _monk = require("monk");
 
 var _monk2 = _interopRequireDefault(_monk);
 
-var _fileSystem = require("file-system");
-
-var _fileSystem2 = _interopRequireDefault(_fileSystem);
-
 var _jsonwebtoken = require("jsonwebtoken");
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
@@ -62,47 +58,42 @@ var FacebookTokenManager = function () {
 
 			}, function (accessToken, refreshToken, profile, cb) {
 				var db = (0, _monk2.default)("mongodb://" + _client.mongodb.dbuser + ":" + _client.mongodb.dbpassword + "@ds055855.mlab.com:55855/winterest");
-				var users = db.get("users");
+				var users = db.get("users", { castIds: false });
 
-				console.log("profile", profile);
+				//			console.log("profile", profile);
 				// see if user registered
 				// if they aren't, register them
 				users.findOneAndUpdate({
-					_id: _monk2.default.id(parseInt(profile.id))
+					_id: profile.id + "facebook"
 				}, {
+					// update the username and profile photo
+					$set: {
+						username: profile.displayName,
+						imageurl: profile.photos[0].value
+					},
+					// default values on creation
 					$setOnInsert: {
-						// default values on creation
 						wins: [],
-						accessToken: _jsonwebtoken2.default.sign({ _id: profile.id }, _cert2.default)
+						accessToken: _jsonwebtoken2.default.sign({ _id: profile.id + "facebook" }, _cert2.default)
 					}
 				}, { upsert: true }).then(function (userData) {
 					// pass it on to callback
 					console.log("accessToken", userData.accessToken);
-					cb({
-						username: profile.displayName,
-						imageurl: profile.photos[0].value,
-						wins: userData.wins,
+					db.close();
+					return cb(null, {
+						_id: userData._id,
 						accessToken: userData.accessToken
 					});
-					db.close();
 				});
 			}));
 		}
 	}, {
-		key: "getRequestToken",
-		value: function getRequestToken(req, res) {
-			console.log("authenticating through facebook...");
-			_passport2.default.authenticate("facebook")(req, res);
-		}
-	}, {
 		key: "verifyOauth",
 		value: function verifyOauth(req, res) {
-			//		console.log("req", req);
-			_passport2.default.authenticate("facebook", { failureRedirect: "/login" }, function (userData) {
-				// successful authentication
-				console.log("userData", userData);
-				res.json(userData);
-			})(req, res);
+			res.json({
+				_id: req.user._id,
+				accessToken: req.user.accessToken
+			});
 		}
 	}]);
 

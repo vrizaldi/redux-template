@@ -23,7 +23,7 @@ function addWin(req, res) {
 
 	// connect to db
 	var db = (0, _monk2.default)("mongodb://" + _client.mongodb.dbuser + ":" + _client.mongodb.dbpassword + "@ds055855.mlab.com:55855/winterest");
-	var users = db.get("users");
+	var users = db.get("users", { castIds: false });
 	var wins = db.get("wins");
 
 	// check if user actually exist
@@ -33,11 +33,16 @@ function addWin(req, res) {
 	}).then(function (user) {
 		if (user) {
 			// user found
-			// insert the new win
+			// insert the new win, with some new properties(timestamped, etc.)
+			newWin.timestamp = new Date();
+			newWin.by_id = user._id;
+			newWin.likers = [];
+
+			console.log("newWin", newWin);
 			wins.insert(newWin).then(function (newWin) {
 				// update the user's wins
 				users.findOneAndUpdate({
-					_id: _monk2.default.id(user._id)
+					_id: user._id
 				}, {
 					$push: {
 						wins: {
@@ -49,7 +54,9 @@ function addWin(req, res) {
 
 					// everything went perfectly
 					console.log("userChange", userChange);
-					res.json(userChange.wins);
+
+					// return the new win
+					res.json({ todo: "add", newWin: [newWin] });
 					db.close();
 				}).catch(function (err) {
 					console.log("err", err);

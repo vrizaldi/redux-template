@@ -11,10 +11,8 @@ var initialStates = {
 	status: "idle",
 	loggedIn: false,
 	userData: {
-		username: "",
-		imageurl: "",
-		accessToken: "",
-		wins: []
+		_id: null,
+		accessToken: ""
 	}
 };
 
@@ -24,22 +22,6 @@ function reduce() {
 
 	console.log("reducing", state);
 	switch (action.type) {
-		case "LOGIN_PENDING":
-			return _extends({}, state, {
-				status: "fetching"
-			});
-
-		case "LOGIN_FULFILLED":
-			return _extends({}, state, {
-				status: "succeed",
-				userData: action.payload.data
-			});
-
-		case "LOGIN_REJECTED":
-			alert(action.payload.response.data ? action.payload.response.data : action.payload);
-			return _extends({}, state, {
-				status: "failed"
-			});
 
 		case "FETCH_USER_PENDING":
 			return _extends({}, state, {
@@ -48,16 +30,18 @@ function reduce() {
 
 		case "FETCH_USER_FULFILLED":
 			var _action$payload$data = action.payload.data,
-			    username = _action$payload$data.username,
-			    imageurl = _action$payload$data.imageurl,
+			    _id = _action$payload$data._id,
 			    accessToken = _action$payload$data.accessToken;
+
+			// save accesstoken to localstorage
+
+			localStorage.setItem("accessToken", accessToken);
 
 			return _extends({}, state, {
 				status: "succeed",
 				loggedIn: true,
 				userData: _extends({}, state.userData, {
-					username: username,
-					imageurl: imageurl,
+					_id: _id,
 					accessToken: accessToken
 				})
 			});
@@ -68,25 +52,12 @@ function reduce() {
 				status: "failed"
 			});
 
-		case "FETCH_WINS_PENDING":
-			return _extends({}, state, {
-				status: "fetching"
-			});
+		case "LOGOUT":
+			// clear access token from local storage
+			localStorage.removeItem("accessToken");
 
-		case "FETCH_WINS_FULFILLED":
-			console.log("wins", action.payload.data);
-			return _extends({}, state, {
-				status: "succeed",
-				userData: _extends({}, state.userData, {
-					wins: action.payload.data
-				})
-			});
-
-		case "FETCH_WINS_REJECTED":
-			alert(action.payload.response.data ? action.payload.response.data : action.payload);
-			return _extends({}, state, {
-				status: "failed"
-			});
+			// reset state
+			return initialStates;
 
 		default:
 			return state;

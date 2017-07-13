@@ -29,6 +29,8 @@ var _NewWinDialogue = require("./NewWinDialogue");
 
 var _NewWinDialogue2 = _interopRequireDefault(_NewWinDialogue);
 
+var _UserActions = require("../actions/UserActions");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39,7 +41,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var Header = (_dec = (0, _reactRedux.connect)(function (store) {
 	return {
-		loggedIn: store.user.loggedIn
+		loggedIn: store.user.loggedIn,
+		userData: store.user.userData
 	};
 }), _dec(_class = function (_React$Component) {
 	_inherits(Header, _React$Component);
@@ -56,6 +59,12 @@ var Header = (_dec = (0, _reactRedux.connect)(function (store) {
 	}
 
 	_createClass(Header, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			// initialise web
+			this.props.dispatch((0, _UserActions.initUser)());
+		}
+	}, {
 		key: "showNewWin",
 		value: function showNewWin() {
 			// show modal
@@ -73,17 +82,7 @@ var Header = (_dec = (0, _reactRedux.connect)(function (store) {
 		}
 	}, {
 		key: "addWin",
-		value: function (_addWin) {
-			function addWin() {
-				return _addWin.apply(this, arguments);
-			}
-
-			addWin.toString = function () {
-				return _addWin.toString();
-			};
-
-			return addWin;
-		}(function () {
+		value: function addWin() {
 			var imageurl = document.getElementById("new-win-img-url").value;
 			var title = document.getElementById("new-win-title").value;
 			var desc = document.getElementById("new-win-desc").value;
@@ -94,11 +93,16 @@ var Header = (_dec = (0, _reactRedux.connect)(function (store) {
 			};
 
 			console.log("Adding " + title + " - " + desc + " (" + imageurl + ")", newWin);
-			this.props.dispatch(addWin(this.props.userData.accessToken, newWin));
+			this.props.dispatch((0, _UserActions.addWin)(this.props.userData.accessToken, newWin));
 
 			// hide the dialogue after
 			this.hideNewWin();
-		})
+		}
+	}, {
+		key: "logout",
+		value: function logout() {
+			this.props.dispatch((0, _UserActions.logout)());
+		}
 	}, {
 		key: "render",
 		value: function render() {
@@ -114,13 +118,14 @@ var Header = (_dec = (0, _reactRedux.connect)(function (store) {
 						{ className: "col-md-2" },
 						_react2.default.createElement(
 							_reactRouterDom.Link,
-							{ className: "nav-link", to: this.props.loggedIn ? "/profile" : "/home" },
+							{ className: "nav-link", to: "/" },
 							"#winterest"
 						)
 					),
+					_react2.default.createElement(_Nav2.default, { loggedIn: this.props.loggedIn, id: this.props.userData._id }),
 					this.props.loggedIn ? _react2.default.createElement(
 						"div",
-						{ id: "win-adder-wrapper", className: "col-md-2" },
+						{ id: "win-adder-wrapper", className: "col-md-1" },
 						_react2.default.createElement(
 							_Button2.default,
 							{ className: "btn btn-success",
@@ -133,7 +138,19 @@ var Header = (_dec = (0, _reactRedux.connect)(function (store) {
 							hideNewWin: this.hideNewWin.bind(this)
 						})
 					) : "",
-					_react2.default.createElement(_Nav2.default, { loggedIn: this.props.loggedIn })
+					this.props.loggedIn ? _react2.default.createElement(
+						"div",
+						{ className: "col-md-1" },
+						_react2.default.createElement(
+							_reactRouterDom.Link,
+							{ id: "logout-btn",
+								className: "nav-link",
+								to: "/",
+								onClick: this.logout.bind(this)
+							},
+							_react2.default.createElement("i", { className: "fa fa-power-off" })
+						)
+					) : ""
 				)
 			);
 		}

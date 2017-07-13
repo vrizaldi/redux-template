@@ -1,13 +1,21 @@
 import express from "express";
+import session from "express-session";
 import bodyParser from "body-parser";
+import passport from "passport";
+import randomstring from "randomstring";
 
+import accessTokenLogin from "./accessTokenLogin";
 import twitterManager from "./TwitterTokenManager";
 import facebookManager from "./FacebookTokenManager";
 import googleManager from "./GoogleTokenManager";
 
 import servePage from "./servePage";
 import addWin from "./addWin";
+import unWin from "./unWin";
 import parseWins from "./parseWins";
+import getProfile from "./getProfile";
+import getRecentWins from "./getRecentWins";
+import handleLike from "./handleLike";
 
 // initialise token managers
 twitterManager.init();
@@ -19,22 +27,50 @@ var server = express();
 
 // initialise middlewares
 server.use(express.static(__dirname + "/../public"));
+
+// sessions
+passport.serializeUser((user, done) => {
+	console.log("serialize user", user);
+	done(null, user._id);
+});
+passport.deserializeUser((obj, done) => {
+	console.log("deserialize", obj);
+	done(null, obj);
+});
+server.use(session({
+	secret: randomstring.generate(),
+	resave: false,
+	saveUninitialized: true
+}));
+server.use(passport.initialize());
+server.use(passport.session());
+
 const jsonencoded = bodyParser.json();
 
 // initialise server routes
-server.get("/login_twitter", twitterManager.getRequestToken.bind(twitterManager));
-server.post("/verify_oauth_twitter", jsonencoded, twitterManager.verifyOauth.bind(twitterManager));
+server.get("/login_twitter", passport.authenticate("twitter"));
+server.get("/verify_oauth_twitter", 
+	passport.authenticate("twitter", {failureRedirect: "/"}),
+	twitterManager.verifyOauth.bind(twitterManager));
 
-server.get("/login_facebook", facebookManager.getRequestToken.bind(facebookManager));
-server.get("/verify_oauth_facebook", facebookManager.verifyOauth.bind(facebookManager));
+server.get("/login_facebook", passport.authenticate("facebook"));
+server.get("/verify_oauth_facebook", 
+	passport.authenticate("facebook", {failureRedirect: "/"}),
+	facebookManager.verifyOauth.bind(facebookManager));
 
-server.get("/login_google", googleManager.getRequestToken.bind(googleManager));
-server.get("/verify_oauth_google", googleManager.verifyOauth.bind(googleManager));
+server.get("/login_google", passport.authenticate("google", {scope: ["profile"]}));
+server.get("/verify_oauth_google", 
+	passport.authenticate("google", {failureRedirect: "/login"}),
+	googleManager.verifyOauth.bind(googleManager));
 
-server.get("*", servePage);
-
+server.post("/access_token_login", jsonencoded, accessTokenLogin);
+server.get("/get_profile", getProfile);
 server.post("/add_win", jsonencoded, addWin);
+server.post("/un_win", jsonencoded, unWin);
 server.post("/parse_wins", jsonencoded, parseWins);
+server.get("/get_recent", getRecentWins);
+server.post("/like", jsonencoded, handleLike);
+server.get("*", servePage);
 
 // start server
 var port = process.env.PORT ? process.env.PORT : 21701;

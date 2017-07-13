@@ -40,7 +40,7 @@ var Login = function (_React$Component) {
 				null,
 				_react2.default.createElement(
 					"h1",
-					null,
+					{ id: "title" },
 					"#Login"
 				),
 				_react2.default.createElement(

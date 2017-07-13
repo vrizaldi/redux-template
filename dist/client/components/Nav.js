@@ -33,15 +33,28 @@ var Nav = function (_React$Component) {
 	_createClass(Nav, [{
 		key: "render",
 		value: function render() {
-
 			return _react2.default.createElement(
 				"div",
-				{ id: "nav", className: "nav col-md-8" },
+				{ id: "nav", className: "col-md-8" },
 				this.props.loggedIn ? _react2.default.createElement(
-					_reactRouterDom.Link,
-					{ className: "nav-link", to: "/profile" },
-					_react2.default.createElement("span", { className: "fa fa-user-circle-o" }),
-					" Profile"
+					"nav",
+					{ className: "nav justify-content-center" },
+					_react2.default.createElement(
+						_reactRouterDom.Link,
+						{ className: "nav-link",
+							to: "/profile?id=" + this.props.id
+						},
+						_react2.default.createElement("span", { className: "fa fa-user-circle-o" }),
+						" Profile"
+					),
+					_react2.default.createElement(
+						_reactRouterDom.Link,
+						{ className: "nav-link",
+							to: "/"
+						},
+						_react2.default.createElement("span", { className: "fa fa-home" }),
+						" Home"
+					)
 				) : _react2.default.createElement(
 					_reactRouterDom.Link,
 					{ className: "nav-link", to: "/login" },

@@ -3,21 +3,20 @@ import { Switch, Route } from "react-router-dom";
 
 import Login from "../pages/Login";
 import Profile from "../pages/Profile";
-import Home from "../pages/Home";
 import LoggingIn from "../pages/LoggingIn";
+import Recent from "../pages/Recent";
 
 export default class Main extends React.Component {
 	render() {
 		return(
-			<div>
-				<h1>#Main</h1>
+			<main>
 				<Switch>
-					<Route exact path="/" component={Home}/>
+					<Route exact path="/" component={Recent}/>
 					<Route path="/profile" component={Profile}/>
 					<Route path="/login" component={Login}/>
 					<Route path="/logging_in" component={LoggingIn}/>
 				</Switch>
-			</div>
+			</main>
 		);
 	}
 }

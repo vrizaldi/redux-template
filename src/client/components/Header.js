@@ -6,9 +6,12 @@ import Nav from "./Nav";
 import Button from "./Button";
 import NewWinDialogue from "./NewWinDialogue";
 
+import { addWin, logout, initUser } from "../actions/UserActions";
+
 @connect ((store) => {
 	return {
-		loggedIn: store.user.loggedIn
+		loggedIn: store.user.loggedIn,
+		userData: store.user.userData
 	};
 }) export default class Header extends React.Component {
 
@@ -18,6 +21,11 @@ import NewWinDialogue from "./NewWinDialogue";
 		this.state = {
 			showingNewWin: false		// for modal
 		};
+	}
+
+	componentDidMount() {
+		// initialise web
+		this.props.dispatch(initUser());
 	}
 	
 	showNewWin() {
@@ -51,19 +59,26 @@ import NewWinDialogue from "./NewWinDialogue";
 		this.hideNewWin();
 	}
 
+	logout() {
+		this.props.dispatch(logout());
+	}
+
 	render() {
 		console.log("loggedIn", this.props.loggedIn);
 		return(
 			<header role="banner" className="navbar fixed-top">
 				<div className="row">
 					<div className="col-md-2">
-						<Link className="nav-link" to={this.props.loggedIn ? "/profile" : "/home"}>
+						<Link className="nav-link" to="/">
 							#winterest
 						</Link>
 					</div>
+
+					<Nav loggedIn={this.props.loggedIn} id={this.props.userData._id}/>
+
 					{
 						this.props.loggedIn ? (
-							<div id="win-adder-wrapper" className="col-md-2">
+							<div id="win-adder-wrapper" className="col-md-1">
 								<Button className="btn btn-success" 
 									action={this.showNewWin.bind(this)}
 								>
@@ -76,7 +91,20 @@ import NewWinDialogue from "./NewWinDialogue";
 							</div>
 						) : ""
 					}
-					<Nav loggedIn={this.props.loggedIn}/>
+					
+					{
+						this.props.loggedIn ? (
+							<div className="col-md-1">
+								<Link id="logout-btn" 
+									className="nav-link"
+									to="/" 
+									onClick={this.logout.bind(this)}
+								>
+									<i className="fa fa-power-off"/>
+								</Link>
+							</div>
+						) : ""
+					}
 				</div>
 			</header>
 		);
