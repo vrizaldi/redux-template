@@ -56,7 +56,7 @@ var Recent = (_dec = (0, _reactRedux.connect)(function (store) {
 		key: "like",
 		value: function like(winID, liking) {
 			console.log("winID", winID);
-			this.props.dispatch((0, _UserActions.like)(this.props.userData.accessToken, winID, liking));
+			this.props.dispatch((0, _UserActions.like)(this.props.userData.accessToken, this.props.userData._id, winID, liking));
 		}
 	}, {
 		key: "render",

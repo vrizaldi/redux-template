@@ -1,4 +1,5 @@
 const initialStates = {
+	onUse: false,
 	status: "idle",
 	wins: []
 };
@@ -67,6 +68,28 @@ export default function reduce(state=initialStates, action) {
 		if(state.personal) alert("Error occurred while trying to reload the wins.");
 		return state;
 
+	case "TOGGLE_LIKE":
+		var wins = state.wins.splice(0);
+		var index = wins.findIndex((win) => {
+			return win._id == action.payload.winID;
+		});
+		if(index > -1) {
+			// win found
+			var win = wins[index];
+			if(action.payload.todo == "inc") {
+				win.likers.push({});		// add likers for UI change
+			} else {
+				win.likers.pop();		// dec likers for UI change
+			}
+			return {
+				...state,
+				wins
+			};
+		} else {		
+			// if not found, just leave it (user may be in profile instead)
+			return state;
+		}
+		
 	default:
 		return state;
 	}

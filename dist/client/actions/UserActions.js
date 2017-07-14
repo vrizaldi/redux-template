@@ -134,21 +134,30 @@ function unWin(accessToken, winID) {
  	};*/
 }
 
-function like(accessToken, winID, liking) {
+function like(accessToken, userID, winID, liking) {
+
+	// update database
+	(0, _axios2.default)({
+		method: "post",
+		url: "/like",
+		data: {
+			accessToken: accessToken,
+			winID: winID,
+			liking: liking
+		},
+		headers: {
+			"content-type": "application/json"
+		}
+	});
+
+	// update UI
 	return {
-		type: "LIKE_WIN",
-		payload: (0, _axios2.default)({
-			method: "post",
-			url: "/like",
-			data: {
-				accessToken: accessToken,
-				winID: winID,
-				liking: liking
-			},
-			headers: {
-				"content-type": "application/json"
-			}
-		})
+		type: "TOGGLE_LIKE",
+		payload: {
+			todo: liking ? "inc" : "dec",
+			winID: winID,
+			userID: userID
+		}
 	};
 }
 

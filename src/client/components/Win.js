@@ -48,12 +48,12 @@ export default class Win extends React.Component {
 							<input id={"like-btn-" + gridItem._id} 
 								className="like-btn"
 								type="checkbox"
-								onInput={this.toggleLike.bind(this)}
+								onChange={this.toggleLike.bind(this)}
 								checked={this.state.liked}
 							/>
-							<label for={"like-btn-" + gridItem._id} 
-								className="fa fa-thumbs-up"
-							/>
+							<label for={"like-btn-" + gridItem._id}>
+								<i className="fa fa-thumbs-up"/> {gridItem.likers.length}
+							</label>
 						</div>
 					) : ""
 				}

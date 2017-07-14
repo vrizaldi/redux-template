@@ -32,7 +32,7 @@ function like(wins, winID, user) {
 	return wins.findOneAndUpdate({
 		_id: monk.id(winID)
 	}, {
-		$$addToSet: {		// make sure that there's no duplicate
+		$addToSet: {		// make sure that there's no duplicate
 			likers: {
 				_id: user._id
 			}

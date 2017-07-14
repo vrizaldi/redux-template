@@ -88,12 +88,16 @@ var Win = function (_React$Component) {
 					_react2.default.createElement("input", { id: "like-btn-" + gridItem._id,
 						className: "like-btn",
 						type: "checkbox",
-						onInput: this.toggleLike.bind(this),
+						onChange: this.toggleLike.bind(this),
 						checked: this.state.liked
 					}),
-					_react2.default.createElement("label", { htmlFor: "like-btn-" + gridItem._id,
-						className: "fa fa-thumbs-up"
-					})
+					_react2.default.createElement(
+						"label",
+						{ htmlFor: "like-btn-" + gridItem._id },
+						_react2.default.createElement("i", { className: "fa fa-thumbs-up" }),
+						" ",
+						gridItem.likers.length
+					)
 				) : "",
 				this.props.delete ? _react2.default.createElement(
 					_Button2.default,

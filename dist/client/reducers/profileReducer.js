@@ -21,6 +21,7 @@ function reduce() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialStates;
 	var action = arguments[1];
 
+	console.log("reducing", state);
 	switch (action.type) {
 
 		case "FETCH_PROFILE_PENDING":
@@ -105,6 +106,31 @@ function reduce() {
 		case "UPDATE_WINS_REJECTED":
 			if (state.personal) alert("Error occurred while trying to reload the wins.");
 			return state;
+
+		case "TOGGLE_LIKE":
+			var wins = state.profileData.wins.splice(0);
+			var index = wins.findIndex(function (win) {
+				return win._id == action.payload.winID;
+			});
+
+			if (index > -1) {
+				// win found
+				var win = wins[index];
+				if (action.payload.todo == "inc") {
+					win.likers.push({}); // add likers for UI purpose
+				} else {
+					win.likers.pop();
+				}
+
+				return _extends({}, state, {
+					profileData: _extends({}, state.profileData, {
+						wins: wins
+					})
+				});
+			} else {
+				// win not found
+				return state;
+			}
 
 		default:
 			return state;

@@ -120,22 +120,33 @@ export function unWin(accessToken, winID) {
 	};*/
 }
 
-export function like(accessToken, winID, liking) {
+export function like(accessToken, userID, winID, liking) {
+	
+	// update database
+	axios({
+		method: "post",
+		url: "/like",
+		data: {
+			accessToken,
+			winID,
+			liking
+		},
+		headers: {
+			"content-type": "application/json"
+		}
+	});
+
+	// update UI
 	return {
-		type: "LIKE_WIN",
-		payload: axios({
-			method: "post",
-			url: "/like",
-			data: {
-				accessToken,
-				winID,
-				liking
-			},
-			headers: {
-				"content-type": "application/json"
-			}
-		})
+		type: "TOGGLE_LIKE",
+		payload: {
+			todo: liking ? "inc" : "dec",
+			winID,
+			userID
+		}
 	};
+
+
 }
 
 function parseWins(dispatch, wins) {

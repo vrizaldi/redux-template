@@ -22,7 +22,7 @@ import Wins from "../components/Wins";
 	like(winID, liking) {
 		console.log("winID", winID);
 		this.props.dispatch(
-			like(this.props.userData.accessToken, winID, liking));
+			like(this.props.userData.accessToken, this.props.userData._id, winID, liking));
 	}
 
 	render() {
