@@ -31,8 +31,9 @@ export default function servePage(req, res) {
 		<head>
 			<meta charset="utf-8">
 
-			<title></title>
+			<title>#winterest</title>
 			<meta name="author" content="vrizaldi">
+			<link id="favicon" rel="icon" href="/favicon.png">
 
 			<link href="/bootstrap.min.css" rel="stylesheet">
 			<link href="/bootstrap-social.css" rel="stylesheet">
