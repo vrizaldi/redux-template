@@ -53,7 +53,7 @@ var FacebookTokenManager = function () {
 			_passport2.default.use(new _passportFacebook2.default({
 				clientID: client_id,
 				clientSecret: client_secret,
-				callbackURL: "http://localhost:21701/logging_in/facebook",
+				callbackURL: "https://voyage-baguette-78534.herokuapp.com/logging_in/facebook",
 				profileFields: ["id", "displayName", "photos"]
 
 			}, function (accessToken, refreshToken, profile, cb) {

@@ -20,7 +20,7 @@ class FacebookTokenManager {
 		passport.use(new FacebookStrategy({
 			clientID: client_id,
 			clientSecret: client_secret,
-			callbackURL: "http://localhost:21701/logging_in/facebook",
+			callbackURL: "https://voyage-baguette-78534.herokuapp.com/logging_in/facebook",
 			profileFields: ["id", "displayName", "photos"]
 
 		}, (accessToken, refreshToken, profile, cb) => {

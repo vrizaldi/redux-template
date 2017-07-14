@@ -22,7 +22,7 @@ class TwitterTokenManager {
 		passport.use(new TwitterStrategy({
 			consumerKey: client_id,
 			consumerSecret: client_secret,
-			callback: "http://127.0.0.1:21701/logging_in/twitter"
+			callback: "https://voyage-baguette-78534.herokuapp.com/logging_in/twitter"
 		}, (token, tokenSecret, profile, cb) => {
 //			console.log("profile", profile);
 			// find and update the user

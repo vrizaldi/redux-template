@@ -57,7 +57,7 @@ var GoogleTokenManager = function () {
 			_passport2.default.use(new _passportGoogleOauth2.default.Strategy({
 				clientID: client_id,
 				clientSecret: client_secret,
-				callbackURL: "http://localhost:21701/logging_in/google"
+				callbackURL: "https://voyage-baguette-78534.herokuapp.com/logging_in/google"
 
 			}, function (accessToken, refreshToken, profile, cb) {
 				console.log("profile", profile);

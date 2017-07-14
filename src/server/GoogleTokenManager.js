@@ -24,7 +24,7 @@ class GoogleTokenManager {
 		passport.use(new GoogleStrategy.Strategy({
 			clientID: client_id,
 			clientSecret: client_secret,
-			callbackURL: "http://localhost:21701/logging_in/google"
+			callbackURL: "https://voyage-baguette-78534.herokuapp.com/logging_in/google"
 
 		}, (accessToken, refreshToken, profile, cb) => {
 			console.log("profile", profile);
