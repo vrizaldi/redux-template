@@ -1,5 +1,5 @@
 body {
-	padding: 4em;
+	padding: 4em 0 4em 4em;
 	margin: 0;
 	background-color: tomato;
 }
@@ -24,9 +24,9 @@ main {
 
 .grid-item {
 	padding: 20px 5px 5px 5px;
-	max-width: 30%;
+	max-width: 18em;
 	background-color: #fff;
-	margin: 10px;
+	border: 1px solid tomato;
 }
 
 .grid-item img {
